@@ -1,7 +1,7 @@
 export function parseMarkdown(content: string) {
-  const lines = content.split('\n');
-  const elements: JSX.Element[] = [];
-  let listItems: JSX.Element[] = [];
+  const lines = content.split("\n");
+  const elements: React.ReactNode[] = [];
+  let listItems: React.ReactNode[] = [];
   let key = 0;
 
   const flushList = () => {
@@ -21,28 +21,28 @@ export function parseMarkdown(content: string) {
     }
 
     // H3 (###) - check longest first
-    if (trimmed.startsWith('### ')) {
+    if (trimmed.startsWith("### ")) {
       flushList();
       elements.push(<h3 key={`h3-${key++}`}>{trimmed.slice(4)}</h3>);
       return;
     }
 
     // H2 (##)
-    if (trimmed.startsWith('## ')) {
+    if (trimmed.startsWith("## ")) {
       flushList();
       elements.push(<h2 key={`h2-${key++}`}>{trimmed.slice(3)}</h2>);
       return;
     }
 
     // H1 (#)
-    if (trimmed.startsWith('# ')) {
+    if (trimmed.startsWith("# ")) {
       flushList();
       elements.push(<h1 key={`h1-${key++}`}>{trimmed.slice(2)}</h1>);
       return;
     }
 
     // List item (-)
-    if (trimmed.startsWith('- ')) {
+    if (trimmed.startsWith("- ")) {
       listItems.push(<li key={`li-${key++}`}>{trimmed.slice(2)}</li>);
       return;
     }
