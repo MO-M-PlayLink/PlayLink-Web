@@ -1,9 +1,15 @@
 import { POLICY_CONTENT } from "@/constants";
 import { parseMarkdown } from "@/lib/markdown";
 
-export const metadata = {
-  title: "개인정보 처리방침 | PlayLink",
-  description: "PlayLink 개인정보 처리방침",
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "개인정보 처리방침",
+  description: "PlayLink 개인정보 처리방침을 확인하세요.",
+  openGraph: {
+    title: "개인정보 처리방침 | PlayLink",
+    description: "PlayLink 개인정보 처리방침",
+  },
 };
 
 export default function PrivacyPolicy() {

@@ -1,9 +1,15 @@
 import { POLICY_CONTENT } from "@/constants";
 import { parseMarkdown } from "@/lib/markdown";
 
-export const metadata = {
-  title: "이용약관 | PlayLink",
-  description: "PlayLink 서비스 이용약관",
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "이용약관",
+  description: "PlayLink 서비스 이용약관을 확인하세요.",
+  openGraph: {
+    title: "이용약관 | PlayLink",
+    description: "PlayLink 서비스 이용약관",
+  },
 };
 
 export default function TermsOfService() {

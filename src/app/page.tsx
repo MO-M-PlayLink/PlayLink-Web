@@ -1,9 +1,42 @@
 import Image from "next/image";
 import Link from "next/link";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "PlayLink - 운동을 함께, 경기를 함께",
+  description:
+    "스포츠를 통해 사람들을 연결하고, 건강한 라이프스타일을 촉진합니다. 운동 파트너를 찾거나 경기를 함께 관람할 멤버를 만나보세요!",
+  openGraph: {
+    title: "PlayLink - 운동을 함께, 경기를 함께",
+    description:
+      "스포츠를 통해 사람들을 연결하고, 건강한 라이프스타일을 촉진합니다.",
+    images: ["/icon.png"],
+  },
+};
 
 export default function Home() {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    name: "PlayLink",
+    description:
+      "스포츠를 통해 사람들을 연결하고, 건강한 라이프스타일을 촉진합니다.",
+    url: process.env.NEXT_PUBLIC_SITE_URL || "https://playlink.app",
+    applicationCategory: "SportsApplication",
+    operatingSystem: "iOS, Android",
+    offers: {
+      "@type": "Offer",
+      price: "0",
+      priceCurrency: "KRW",
+    },
+  };
+
   return (
     <main className="min-h-screen pt-12">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       {/* Hero Section */}
       <section className="flex min-h-screen flex-col items-center justify-center bg-white px-4 py-20">
         <div className="mx-auto max-w-4xl text-center">
@@ -51,12 +84,18 @@ export default function Home() {
               <p className="mb-4 text-sm">이메일: hwattoo-pae@naver.com</p>
               <div className="space-y-2 text-sm">
                 <div>
-                  <Link href="/privacy" className="hover:text-white hover:underline">
+                  <Link
+                    href="/privacy"
+                    className="hover:text-white hover:underline"
+                  >
                     개인정보 처리방침
                   </Link>
                 </div>
                 <div>
-                  <Link href="/terms" className="hover:text-white hover:underline">
+                  <Link
+                    href="/terms"
+                    className="hover:text-white hover:underline"
+                  >
                     이용약관
                   </Link>
                 </div>
